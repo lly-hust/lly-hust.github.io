@@ -15,7 +15,7 @@
 <meta property="og:url" content="http://yoursite.com/2017/06/09/Scaling Concurrent Log-Structured Data Stores/index.html">
 <meta property="og:site_name" content="Liya Lin's Blog">
 <meta property="og:description" content="Scaling Concurrent Log-Structured Data Stores Scaling Concurrent Log-Structured Data Stores – Golan-Gueta et al. 2015  基于LSM-tree的键值存储应用广泛。原始设计目的是减轻速度较慢的磁盘I/O。随着内核数量的增加，作者发现内存争用已成为瓶颈。通过使用并发哈希映射数据结构替换L">
-<meta property="og:updated_time" content="2017-06-09T11:35:59.558Z">
+<meta property="og:updated_time" content="2017-06-09T11:39:22.629Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Scaling Concurrent Log-Structured Data Stores">
 <meta name="twitter:description" content="Scaling Concurrent Log-Structured Data Stores Scaling Concurrent Log-Structured Data Stores – Golan-Gueta et al. 2015  基于LSM-tree的键值存储应用广泛。原始设计目的是减轻速度较慢的磁盘I/O。随着内核数量的增加，作者发现内存争用已成为瓶颈。通过使用并发哈希映射数据结构替换L">
@@ -183,7 +183,7 @@
         <h1 id="Scaling-Concurrent-Log-Structured-Data-Stores"><a href="#Scaling-Concurrent-Log-Structured-Data-Stores" class="headerlink" title="Scaling Concurrent Log-Structured Data Stores"></a>Scaling Concurrent Log-Structured Data Stores</h1><blockquote>
 <p>Scaling Concurrent Log-Structured Data Stores – Golan-Gueta et al. 2015</p>
 </blockquote>
-<p>基于LSM-tree的键值存储应用广泛。原始设计目的是减轻速度较慢的磁盘I/O。随着内核数量的增加，作者发现内存争用已成为瓶颈。通过使用并发哈希映射数据结构替换LSM-tree的内存组件，可以获得更好的可扩展性。</p>
+<p>基于LSM-tree的键值存储应用广泛。原始设计目的是减轻速度较慢的磁盘I/O。随着内核数量的增加，作者发现内存争用已成为瓶颈。通过使用并发哈希映射数据结构替换LSM-tree的内存组件，可以获得更好的可扩展性。<br><a id="more"></a></p>
 <p>论文中写到：<br>“磁盘访问是存储系统的主要瓶颈，即使是现在流行的SSD，仍然是瓶颈。由于读取性能通常通过缓存得到优化，重点应放在提高写入吞吐量和延迟。因此LSM方法已经成为当前领先的键值存储中常用的选择，LSM可以在内存中批量写入并在后台将其与磁盘存储器进行合并。”</p>
 <p>“Google的LevelDB作为键值存储中的骨干，是单机LSM最先进的实现。 它使用粗粒度同步，强制所有put顺序执行，和单个线程合并进程。 这两种设计选择显著减少多核环境中的系统吞吐量。 HyperDex的数据存储引擎HyperLeDB可以缓解这种影响。 它以两种关键方式改进了LevelDB：（1）通过使用细粒度的锁来增加并发性，以及（2）通过使用不同的合并策略… Facebook的键值存储RocksDB也建立在LevelDB上。”</p>
 <p>Links: LevelDB, HyperLevelDB, HyperDex, RocksDB.</p>
