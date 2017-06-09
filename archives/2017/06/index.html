@@ -6,11 +6,11 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Liya Lin&#39;s Blog</title>
+  <title>Archives: 2017/6 | Liya Lin&#39;s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta property="og:type" content="website">
 <meta property="og:title" content="Liya Lin's Blog">
-<meta property="og:url" content="http://yoursite.com/index.html">
+<meta property="og:url" content="http://yoursite.com/archives/2017/06/index.html">
 <meta property="og:site_name" content="Liya Lin's Blog">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Liya Lin's Blog">
@@ -157,127 +157,47 @@
           <div id="js-content" class="content-ll">
             
   
-    <article id="post-Scaling Concurrent Log-Structured Data Stores" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
+  
     
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/06/09/Scaling Concurrent Log-Structured Data Stores/">Scaling Concurrent Log-Structured Data Stores</a>
-    </h1>
-  
-
-        
-        <a href="/2017/06/09/Scaling Concurrent Log-Structured Data Stores/" class="archive-article-date">
+    
+      
+      
+      <section class="archives-wrap">
+        <div class="archive-year-wrap">
+          <a href="/archives/2017" class="archive-year">2017</a>
+        </div>
+        <div class="archives">
+    
+    <article class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+      	<div class="article-meta">
+	      	<a href="/2017/06/09/Scaling Concurrent Log-Structured Data Stores/" class="archive-article-date">
   	<time datetime="2017-06-09T11:36:18.226Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-06-09</time>
 </a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="Scaling-Concurrent-Log-Structured-Data-Stores"><a href="#Scaling-Concurrent-Log-Structured-Data-Stores" class="headerlink" title="Scaling Concurrent Log-Structured Data Stores"></a>Scaling Concurrent Log-Structured Data Stores</h1><blockquote>
-<p>Scaling Concurrent Log-Structured Data Stores – Golan-Gueta et al. 2015</p>
-</blockquote>
-<p>基于LSM-tree的键值存储应用广泛。原始设计目的是减轻速度较慢的磁盘I/O。随着内核数量的增加，作者发现内存争用已成为瓶颈。通过使用并发哈希映射数据结构替换LSM-tree的内存组件，可以获得更好的可扩展性。</p>
-<p>论文中写到：<br>“磁盘访问是存储系统的主要瓶颈，即使是现在流行的SSD，仍然是瓶颈。由于读取性能通常通过缓存得到优化，重点应放在提高写入吞吐量和延迟。因此LSM方法已经成为当前领先的键值存储中常用的选择，LSM可以在内存中批量写入并在后台将其与磁盘存储器进行合并。”</p>
-<p>“Google的LevelDB作为键值存储中的骨干，是单机LSM最先进的实现。 它使用粗粒度同步，强制所有put顺序执行，和单个线程合并进程。 这两种设计选择显著减少多核环境中的系统吞吐量。 HyperDex的数据存储引擎HyperLeDB可以缓解这种影响。 它以两种关键方式改进了LevelDB：（1）通过使用细粒度的锁来增加并发性，以及（2）通过使用不同的合并策略… Facebook的键值存储RocksDB也建立在LevelDB上。”</p>
-<p>Links: LevelDB, HyperLevelDB, HyperDex, RocksDB.</p>
-<p>处理多核挑战的一种方法是进一步分割数据，并在同一台机器上运行多个日志结构化合并数据存储（LSM-DS）。 在The Tail at Scale中Dean等人建议使用细粒度分割机制。Golan-Gueta等对这种方法提出了两个相反意见：（a）一致的快照扫描不跨越多个分区，而是要求跨分片进行事务，（b）需要一个系统级机制管理分区，这本身就可能成为一个瓶颈。</p>
-<p>下图显示了使用一个大分区的cLSM实现的性能，LevelDB和HyperLevelDB处理相同数量的总体数据，但分为四个分区。 随着并发线程数的增加，cLSM实现了更好的吞吐量，但…</p>
-<p>这张图表使得cLSM令人印象深刻。 请注意几件事情：16线程的性能对于所有系统来说非常接近（用于测试的硬件可以支持16个硬件线程）; 超过16个线程虽然cLSM表现比其他线程好得多，但其吞吐量的绝对增益相对较小。</p>
-<p>更有说服力的是来自由键值存储支持的“网络上的一些主要个性化内容和广告系统”这类工作负载的评估，参见图10，转载如下：</p>
-<p>cLSM设法保持比竞争对手更低的延迟数量，吞吐量大小。</p>
-<p>怎么做呢？首先，LSM树的内存中的组件被“线程安全的映射数据结构”所取代。</p>
-<p>“我们为内存组件假设一个线程安全的映射数据结构。它的操作可以同时由多个线程执行。大量数据结构实现，以非阻塞和原子方式提供此功能。”</p>
-<p>然后将其集成到正常的LSM合并操作中。快照扫描是在内存映射上实现的，假设映射提供了具有弱一致性的迭代器(如果在映射期间包含了一个元素，它将被包括在扫描结果中)。</p>
-<p>最后，介绍了一个原子的读-修改-写操作:<br>“我们现在引入一般的读 - 修改 - 写操作RMW（k，f），它将任意函数f原子地应用于与键k相关联的当前值v，并将f（v）存储在其位置。 这种操作对于许多应用是有用的，从简单的向量时钟更新和验证到实现全面的事务。”</p>
-<p>该实现假定链表或衍生实现类型的映射结构。 在此基础上，它使用高效并发控制，以及链中的prev和succ节点的内容来检测冲突。</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/06/09/Scaling Concurrent Log-Structured Data Stores/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-  
-    <article id="post-hello-world" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
+        </div>
+    	 
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2017/04/27/hello-world/">Hello World</a>
+      <a class="archive-article-title" href="/2017/06/09/Scaling Concurrent Log-Structured Data Stores/">Scaling Concurrent Log-Structured Data Stores</a>
     </h1>
   
 
-        
-        <a href="/2017/04/27/hello-world/" class="archive-article-date">
-  	<time datetime="2017-04-27T08:56:18.911Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-04-27</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo new <span class="string">"My New Post"</span></div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="external">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo server</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="external">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo generate</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="external">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo deploy</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="external">Deployment</a></p>
+        <div class="article-info info-on-right">
+          
+          
 
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/04/27/hello-world/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
+        </div>
+        <div class="clearfix"></div>
+    </header>
   </div>
 </article>
-
-
-
-
-
   
   
+    </div></section>
+  
+
+    
 
 
           </div>
@@ -304,9 +224,9 @@
     <script>
 	var yiliaConfig = {
 		mathjax: true,
-		isHome: true,
+		isHome: false,
 		isPost: false,
-		isArchive: false,
+		isArchive: true,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
