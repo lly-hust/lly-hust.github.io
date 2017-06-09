@@ -178,9 +178,9 @@
     <div class="article-entry" itemprop="articleBody">
       
         <h1 id="Scaling-Concurrent-Log-Structured-Data-Stores"><a href="#Scaling-Concurrent-Log-Structured-Data-Stores" class="headerlink" title="Scaling Concurrent Log-Structured Data Stores"></a>Scaling Concurrent Log-Structured Data Stores</h1><blockquote>
-<p>Scaling Concurrent Log-Structured Data Stores – Golan-Gueta et al. 2015</p>
+<p><a href="http://dl.acm.org/citation.cfm?id=2741973&amp;CFID=946327627&amp;CFTOKEN=41267640">Scaling Concurrent Log-Structured Data Stores</a> – Golan-Gueta et al. 2015</p>
 </blockquote>
-<p>基于LSM-tree的键值存储应用广泛。原始设计目的是减轻速度较慢的磁盘I/O。随着内核数量的增加，作者发现内存争用已成为瓶颈。通过使用并发哈希映射数据结构替换LSM-tree的内存组件，可以获得更好的可扩展性。<br>
+<p>基于<a href="https://blog.acolyer.org/2014/11/26/the-log-structured-merge-tree-lsm-tree/">LSM-tree</a>的键值存储应用广泛。原始设计目的是减轻速度较慢的磁盘I/O。随着内核数量的增加，作者发现内存争用已成为瓶颈。通过使用并发哈希映射数据结构替换LSM-tree的内存组件，可以获得更好的可扩展性。<br>
         
           <a class="article-more-a" href="/2017/06/09/Scaling Concurrent Log-Structured Data Stores/#more">more >></a>
         
