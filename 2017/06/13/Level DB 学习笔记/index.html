@@ -8,19 +8,19 @@
   <link rel="dns-prefetch" href="http://yoursite.com">
   <title>Level DB 学习笔记 | Liya Lin&#39;s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Level DB 学习笔记Level DB 是一种基于 operation log 的文件系统，是 LSM-tree 的典型实现。LSM 源自 Ousterhout 和 Rosenblum 在 1991 年发表的经典论文The Design and Implementation of a Log-Structured File System。 由于采用了 operation log，它就可以把随机">
+  <meta name="description" content="Level DB 学习笔记Level DB 是一种基于 operation log 的文件系统，是 LSM-tree 的典型实现。LSM 源自 Ousterhout 和 Rosenblum 在 1991 年发表的经典论文&amp;lt;The Design and Implementation of a Log-Structured File System&amp;gt;。 由于采用了 operation log">
 <meta name="keywords">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Level DB 学习笔记">
 <meta property="og:url" content="http://yoursite.com/2017/06/13/Level DB 学习笔记/index.html">
 <meta property="og:site_name" content="Liya Lin's Blog">
-<meta property="og:description" content="Level DB 学习笔记Level DB 是一种基于 operation log 的文件系统，是 LSM-tree 的典型实现。LSM 源自 Ousterhout 和 Rosenblum 在 1991 年发表的经典论文The Design and Implementation of a Log-Structured File System。 由于采用了 operation log，它就可以把随机">
+<meta property="og:description" content="Level DB 学习笔记Level DB 是一种基于 operation log 的文件系统，是 LSM-tree 的典型实现。LSM 源自 Ousterhout 和 Rosenblum 在 1991 年发表的经典论文&amp;lt;The Design and Implementation of a Log-Structured File System&amp;gt;。 由于采用了 operation log">
 <meta property="og:image" content="http://yoursite.com/2017/06/13/Level%20DB%20学习笔记/picture/3-1.png">
 <meta property="og:image" content="http://yoursite.com/2017/06/13/Level%20DB%20学习笔记/picture/3-2.png">
-<meta property="og:updated_time" content="2017-06-13T04:03:32.060Z">
+<meta property="og:updated_time" content="2017-06-13T04:05:06.432Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Level DB 学习笔记">
-<meta name="twitter:description" content="Level DB 学习笔记Level DB 是一种基于 operation log 的文件系统，是 LSM-tree 的典型实现。LSM 源自 Ousterhout 和 Rosenblum 在 1991 年发表的经典论文The Design and Implementation of a Log-Structured File System。 由于采用了 operation log，它就可以把随机">
+<meta name="twitter:description" content="Level DB 学习笔记Level DB 是一种基于 operation log 的文件系统，是 LSM-tree 的典型实现。LSM 源自 Ousterhout 和 Rosenblum 在 1991 年发表的经典论文&amp;lt;The Design and Implementation of a Log-Structured File System&amp;gt;。 由于采用了 operation log">
 <meta name="twitter:image" content="http://yoursite.com/2017/06/13/Level%20DB%20学习笔记/picture/3-1.png">
   
     <link rel="alternative" href="/atom.xml" title="Liya Lin&#39;s Blog" type="application/atom+xml">
@@ -183,7 +183,7 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="Level-DB-学习笔记"><a href="#Level-DB-学习笔记" class="headerlink" title="Level DB 学习笔记"></a>Level DB 学习笔记</h1><p>Level DB 是一种基于 operation log 的文件系统，是 LSM-tree 的典型实现。LSM 源自 Ousterhout 和 Rosenblum 在 1991 年发表的经典论文<a href="http://citeseerx.ist.psu.edu/viewdoc/summary?doi=10.1.1.41.8933/" target="_blank" rel="external">The Design and Implementation of a Log-Structured File System</a>。</p>
+        <h1 id="Level-DB-学习笔记"><a href="#Level-DB-学习笔记" class="headerlink" title="Level DB 学习笔记"></a>Level DB 学习笔记</h1><p>Level DB 是一种基于 operation log 的文件系统，是 LSM-tree 的典型实现。LSM 源自 Ousterhout 和 Rosenblum 在 1991 年发表的经典论文&lt;<a href="http://citeseerx.ist.psu.edu/viewdoc/summary?doi=10.1.1.41.8933/" target="_blank" rel="external">The Design and Implementation of a Log-Structured File System</a>&gt;。</p>
 <p>由于采用了 operation log，它就可以把随机的磁盘写操作，变成了对 operation log 的 append 操作，因此提高了 IO 效率，最新的数据则存储在内存 memtable中。</p>
 <p>当 operation log 文件大小超过限定值时，就定时做 check point。 Leveldb 会生成新的 Log 文件和 Memtable，后台调度会将 Immutable Memtable 的数据导出到磁盘，形成一个新的 SSTable 文件。 SSTable 就是由内存中的数据不断导出并进行 Compaction 操作后形成的，而且 SSTable 的所有文件是一种层级结构，第一层为 Level 0，第二层为 Level 1，依次类推，层级逐渐增高，这也是为何称之为 LevelDb 的原因。<br><a id="more"></a></p>
 <ul>
