@@ -16,8 +16,8 @@
 <meta property="og:site_name" content="Liya Lin's Blog">
 <meta property="og:description" content="Level DB 学习笔记Level DB 是一种基于 operation log 的文件系统，是 LSM-tree 的典型实现。LSM 源自 Ousterhout 和 Rosenblum 在 1991 年发表的经典论文&amp;lt;The Design and Implementation of a Log-Structured File System&amp;gt;。 由于采用了 operation log">
 <meta property="og:image" content="http://yoursite.com/picture/3-1.png">
-<meta property="og:image" content="http://yoursite.com/2017/06/13/Level%20DB%20学习笔记/3-2.png">
-<meta property="og:updated_time" content="2017-06-13T06:56:08.022Z">
+<meta property="og:image" content="http://yoursite.com/picture/3-2.png">
+<meta property="og:updated_time" content="2017-06-13T06:59:33.383Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Level DB 学习笔记">
 <meta name="twitter:description" content="Level DB 学习笔记Level DB 是一种基于 operation log 的文件系统，是 LSM-tree 的典型实现。LSM 源自 Ousterhout 和 Rosenblum 在 1991 年发表的经典论文&amp;lt;The Design and Implementation of a Log-Structured File System&amp;gt;。 由于采用了 operation log">
@@ -198,7 +198,7 @@
 <p>4.Skip list</p>
 <p>在 Leveldb 中， skip list 是实现 memtable 的核心数据结构， memtable 的 KV 数据都存储在 skip list 中。<br>Skip list(跳跃表）是一种可以代替平衡树的数据结构。 Skip lists 应用概率保证平衡，平衡树采用严格的旋转（比如平衡二叉树有左旋右旋）来保证平衡，因此 Skip list 比较容易实现，而且相比平衡树有着较高的运行效率。<br>从概率上保持数据结构的平衡比显式的保持数据结构平衡要简单的多。对于大多数应用，用 skip list 要比用树更自然，算法也会相对简单。由于 skip list 比较简单，实现起来会比较容易，虽然和平衡树有着相同的时间复杂度(O(logn))，但是 skip list 的常数项相对小很多。 skip list 在空间上也比较节省。一个节点平均只需要 1.333 个指针（甚至更少），并且不需要存储保持平衡的变量。<br><img src="/picture/3-1.png" alt="image"></p>
 <p>5.Cache</p>
-<p><img src="3-2.png" alt="image"><br>leveldb 中支持用户自己实现 block cache 逻辑，作为 option 传入。默认使用的是内部实现的 LRU。<br>简单以及效率考虑， leveldb 中实现了一个简单的 hash table（ HashHandle） ， 采用定长数组存放node，链表解决 hash 冲突，每次 insert 后，如果 node 数量大于数组的容量（期望短的冲突链表长度） ，就将容量扩大 2 倍，做一次 rehash。<br>LRU 的逻辑由 LRUCache 控制， insert 和 lookup 时更新链表即可。<br>为了加速查找和减少冲突，又将 LRUCache 再做 shard（ ShardedLRUCache）。<br>整体来看，上层使用 cache 时，首先根据 key 做 shard，然后在 LRUCache 层对 HashHandle 做数据的操作，最后处理 lru 逻辑。</p>
+<p><img src="/picture/3-2.png" alt="image"><br>leveldb 中支持用户自己实现 block cache 逻辑，作为 option 传入。默认使用的是内部实现的 LRU。<br>简单以及效率考虑， leveldb 中实现了一个简单的 hash table（ HashHandle） ， 采用定长数组存放node，链表解决 hash 冲突，每次 insert 后，如果 node 数量大于数组的容量（期望短的冲突链表长度） ，就将容量扩大 2 倍，做一次 rehash。<br>LRU 的逻辑由 LRUCache 控制， insert 和 lookup 时更新链表即可。<br>为了加速查找和减少冲突，又将 LRUCache 再做 shard（ ShardedLRUCache）。<br>整体来看，上层使用 cache 时，首先根据 key 做 shard，然后在 LRUCache 层对 HashHandle 做数据的操作，最后处理 lru 逻辑。</p>
 <p>6.其他</p>
 <p>Random、 Hash、 CRC32、 Histogram等，在 util 文件夹下。</p>
 <hr>
