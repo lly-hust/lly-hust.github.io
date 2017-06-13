@@ -17,7 +17,7 @@
 <meta property="og:description" content="Level DB 学习笔记Level DB 是一种基于 operation log 的文件系统，是 LSM-tree 的典型实现。LSM 源自 Ousterhout 和 Rosenblum 在 1991 年发表的经典论文&amp;lt; [The Design and Implementation of a Log-Structured File System](http://citeseerx.ist.">
 <meta property="og:image" content="http://yoursite.com/2017/06/13/Level%20DB%20学习笔记/picture/3-1.png">
 <meta property="og:image" content="http://yoursite.com/2017/06/13/Level%20DB%20学习笔记/picture/3-2.png">
-<meta property="og:updated_time" content="2017-06-13T03:25:34.822Z">
+<meta property="og:updated_time" content="2017-06-13T03:31:00.528Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Level DB 学习笔记">
 <meta name="twitter:description" content="Level DB 学习笔记Level DB 是一种基于 operation log 的文件系统，是 LSM-tree 的典型实现。LSM 源自 Ousterhout 和 Rosenblum 在 1991 年发表的经典论文&amp;lt; [The Design and Implementation of a Log-Structured File System](http://citeseerx.ist.">
@@ -183,34 +183,21 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="Level-DB-学习笔记"><a href="#Level-DB-学习笔记" class="headerlink" title="Level DB 学习笔记"></a>Level DB 学习笔记</h1><p>Level DB 是一种基于 operation log 的文件系统，是 LSM-tree 的典型实现。LSM 源自 Ousterhout 和 Rosenblum 在 1991 年发表的经典论文&lt; [The Design and Implementation of a Log-Structured File System](<a href="http://citeseerx.ist.psu.edu/viewdoc/summary?doi=10.1.1.41.8933" target="_blank" rel="external">http://citeseerx.ist.psu.edu/viewdoc/summary?doi=10.1.1.41.8933</a> &gt;。<br>由于采用了 operation log，它就可以把随机的磁盘写操作，变成了对 operation log 的 append 操作，因此提高了 IO 效率，最新的数据则存储在内存 memtable中。<br>当 operation log 文件大小超过限定值时，就定时做 check point。 Leveldb 会生成新的 Log 文件和 Memtable，后台调度会将 Immutable Memtable 的数据导出到磁盘，形成一个新的 SSTable 文件。 SSTable 就是由内存中的数据不断导出并进行 Compaction 操作后形成的，而且 SSTable 的所有文件是一种层级结构，第一层为 Level 0，第二层为 Level 1，依次类推，层级逐渐增高，这也是为何称之为 LevelDb 的原因。</p>
-<hr>
+        <h1 id="Level-DB-学习笔记"><a href="#Level-DB-学习笔记" class="headerlink" title="Level DB 学习笔记"></a>Level DB 学习笔记</h1><p>Level DB 是一种基于 operation log 的文件系统，是 LSM-tree 的典型实现。LSM 源自 Ousterhout 和 Rosenblum 在 1991 年发表的经典论文&lt; [The Design and Implementation of a Log-Structured File System](<a href="http://citeseerx.ist.psu.edu/viewdoc/summary?doi=10.1.1.41.8933" target="_blank" rel="external">http://citeseerx.ist.psu.edu/viewdoc/summary?doi=10.1.1.41.8933</a> &gt;。<br>由于采用了 operation log，它就可以把随机的磁盘写操作，变成了对 operation log 的 append 操作，因此提高了 IO 效率，最新的数据则存储在内存 memtable中。<br>当 operation log 文件大小超过限定值时，就定时做 check point。 Leveldb 会生成新的 Log 文件和 Memtable，后台调度会将 Immutable Memtable 的数据导出到磁盘，形成一个新的 SSTable 文件。 SSTable 就是由内存中的数据不断导出并进行 Compaction 操作后形成的，而且 SSTable 的所有文件是一种层级结构，第一层为 Level 0，第二层为 Level 1，依次类推，层级逐渐增高，这也是为何称之为 LevelDb 的原因。<br><a id="more"></a></p>
 <ul>
 <li>约定：</li>
 </ul>
-<ol>
-<li><p>Level DB 对数字的存储采用小端格式 ( little-endian )。体现在把 int32和 int64 转换为char*函数的过程中。<br>ps：不同的CPU有不同的字节序类型，这些字节序是指整数在内存中保存的顺序。<br> 最常见的有两种：<br> (1) Little-endian：将低序字节存储在起始地址（低位编址）<br> (2) Big-endian：将高序字节存储在起始地址（高位编址）</p>
-</li>
-<li><p>变长存储varint，每 byte 的有效存储是 7bit 的，用最高的 8bit 位来表示是否结束，如果是 1 就表 示后面还有一个 byte 的数字，否则表示结束( Encode &amp; Decode )。在操作 log 中使用的是 Fixed 存储格式。</p>
-</li>
-<li><p>字符串比较基于unsigned char。</p>
-</li>
-</ol>
+<p>1.Level DB 对数字的存储采用小端格式 ( little-endian )。体现在把 int32和 int64 转换为char*函数的过程中。<br>ps：不同的CPU有不同的字节序类型，这些字节序是指整数在内存中保存的顺序。<br>    最常见的有两种：<br>    (1) Little-endian：将低序字节存储在起始地址（低位编址）<br>    (2) Big-endian：将高序字节存储在起始地址（高位编址）</p>
+<p>2.变长存储varint，每 byte 的有效存储是 7bit 的，用最高的 8bit 位来表示是否结束，如果是 1 就表 示后面还有一个 byte 的数字，否则表示结束( Encode &amp; Decode )。在操作 log 中使用的是 Fixed 存储格式。</p>
+<p>3.字符串比较基于unsigned char。</p>
 <ul>
-<li>基本数据结构：</li>
+<li>基本数据结构：<br>1.Slice<br>为操作数据的方便，将数据和长度包装成 Slice 使用，直接操控指针避免不必要的数据拷贝。<br>提供一些基本接口，可以把 const char<em> 和 string 转换为 Slice；把 Slice 转换为 string，取得数据指针 const char</em>。</li>
 </ul>
-<ol>
-<li><p>Slice<br>为操作数据的方便，将数据和长度包装成 Slice 使用，直接操控指针避免不必要的数据拷贝。<br>提供一些基本接口，可以把 const char<em> 和 string 转换为 Slice；把 Slice 转换为 string，取得数据指针 const char</em>。</p>
-</li>
-<li><p>Status<br>Leveldb 中的返回状态，将错误号和错误信息封装成 Status 类，统一进行处理。并定义了几种具体的返回状态，如成功或者文件不存在等。<br>为了节省空间 Status 并没有用 std::string 来存储错误信息，而是将返回码(code), 错误信息 message 及长度打包存储于一个字符串数组中。<br>成功状态 OK 是 NULL state<em>，否则 state</em> 是一个包含如下信息的数组:<br>state<em>[0..3] == 消息 message 长度<br>state</em>[4] == 消息 code<br>state_[5..] ==消息 message</p>
-</li>
-<li><p>Arena<br>Leveldb 的简单的内存池，它所作的工作十分简单，申请内存时，将申请到的内存块放入 std::vector blocks_中，在 Arena 的生命周期结束后，统一释放掉所有申请到的内存。<br>Arena 主要提供了两个申请函数：其中一个直接分配内存，另一个可以申请对齐的内存空间。 Arena 没有直接调用 delete/free 函数，而是由Arena 的析构函数统一释放所有的内存。<br>应该说这是和 leveldb 特定的应用场景相关的，比如一个 memtable 使用一个 Arena，当 memtable 被释放时，由 Arena 统一释放其内存。</p>
-</li>
-<li><p>Skip list<br>在 Leveldb 中， skip list 是实现 memtable 的核心数据结构， memtable 的 KV 数据都存储在 skip list 中。<br>Skip list(跳跃表）是一种可以代替平衡树的数据结构。 Skip lists 应用概率保证平衡，平衡树采用严格的旋转（比如平衡二叉树有左旋右旋）来保证平衡，因此 Skip list 比较容易实现，而且相比平衡树有着较高的运行效率。<br>从概率上保持数据结构的平衡比显式的保持数据结构平衡要简单的多。对于大多数应用，用 skip list 要比用树更自然，算法也会相对简单。由于 skip list 比较简单，实现起来会比较容易，虽然和平衡树有着相同的时间复杂度(O(logn))，但是 skip list 的常数项相对小很多。 skip list 在空间上也比较节省。一个节点平均只需要 1.333 个指针（甚至更少），并且不需要存储保持平衡的变量。<br><img src="./picture/3-1.png" alt="image"></p>
-</li>
-<li>Cache<br><img src="./picture/3-2.png" alt="image"><br>leveldb 中支持用户自己实现 block cache 逻辑，作为 option 传入。默认使用的是内部实现的 LRU。<br>简单以及效率考虑， leveldb 中实现了一个简单的 hash table（ HashHandle） ， 采用定长数组存放node，链表解决 hash 冲突，每次 insert 后，如果 node 数量大于数组的容量（期望短的冲突链表长度） ，就将容量扩大 2 倍，做一次 rehash。<br>LRU 的逻辑由 LRUCache 控制， insert 和 lookup 时更新链表即可。<br>为了加速查找和减少冲突，又将 LRUCache 再做 shard（ ShardedLRUCache）。<br>整体来看，上层使用 cache 时，首先根据 key 做 shard，然后在 LRUCache 层对 HashHandle 做数据的操作，最后处理 lru 逻辑。</li>
-<li>其他<br>Random、 Hash、 CRC32、 Histogram等，在 util 文件夹下。</li>
-</ol>
+<p>2.Status<br>Leveldb 中的返回状态，将错误号和错误信息封装成 Status 类，统一进行处理。并定义了几种具体的返回状态，如成功或者文件不存在等。<br>为了节省空间 Status 并没有用 std::string 来存储错误信息，而是将返回码(code), 错误信息 message 及长度打包存储于一个字符串数组中。<br>成功状态 OK 是 NULL state<em>，否则 state</em> 是一个包含如下信息的数组:<br>state<em>[0..3] == 消息 message 长度<br>state</em>[4] == 消息 code<br>state_[5..] ==消息 message</p>
+<p>3.Arena<br>Leveldb 的简单的内存池，它所作的工作十分简单，申请内存时，将申请到的内存块放入 std::vector blocks_中，在 Arena 的生命周期结束后，统一释放掉所有申请到的内存。<br>Arena 主要提供了两个申请函数：其中一个直接分配内存，另一个可以申请对齐的内存空间。 Arena 没有直接调用 delete/free 函数，而是由Arena 的析构函数统一释放所有的内存。<br>应该说这是和 leveldb 特定的应用场景相关的，比如一个 memtable 使用一个 Arena，当 memtable 被释放时，由 Arena 统一释放其内存。</p>
+<p>4.Skip list<br>在 Leveldb 中， skip list 是实现 memtable 的核心数据结构， memtable 的 KV 数据都存储在 skip list 中。<br>Skip list(跳跃表）是一种可以代替平衡树的数据结构。 Skip lists 应用概率保证平衡，平衡树采用严格的旋转（比如平衡二叉树有左旋右旋）来保证平衡，因此 Skip list 比较容易实现，而且相比平衡树有着较高的运行效率。<br>从概率上保持数据结构的平衡比显式的保持数据结构平衡要简单的多。对于大多数应用，用 skip list 要比用树更自然，算法也会相对简单。由于 skip list 比较简单，实现起来会比较容易，虽然和平衡树有着相同的时间复杂度(O(logn))，但是 skip list 的常数项相对小很多。 skip list 在空间上也比较节省。一个节点平均只需要 1.333 个指针（甚至更少），并且不需要存储保持平衡的变量。<br><img src="./picture/3-1.png" alt="image"></p>
+<p>5.Cache<br><img src="./picture/3-2.png" alt="image"><br>leveldb 中支持用户自己实现 block cache 逻辑，作为 option 传入。默认使用的是内部实现的 LRU。<br>简单以及效率考虑， leveldb 中实现了一个简单的 hash table（ HashHandle） ， 采用定长数组存放node，链表解决 hash 冲突，每次 insert 后，如果 node 数量大于数组的容量（期望短的冲突链表长度） ，就将容量扩大 2 倍，做一次 rehash。<br>LRU 的逻辑由 LRUCache 控制， insert 和 lookup 时更新链表即可。<br>为了加速查找和减少冲突，又将 LRUCache 再做 shard（ ShardedLRUCache）。<br>整体来看，上层使用 cache 时，首先根据 key 做 shard，然后在 LRUCache 层对 HashHandle 做数据的操作，最后处理 lru 逻辑。</p>
+<p>6.其他<br>Random、 Hash、 CRC32、 Histogram等，在 util 文件夹下。</p>
 
       
 
