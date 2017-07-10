@@ -157,6 +157,57 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-Python-matplotlib用法" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/07/10/Python-matplotlib用法/">Python-matplotlib用法</a>
+    </h1>
+  
+
+        
+        <a href="/2017/07/10/Python-matplotlib用法/" class="archive-article-date">
+  	<time datetime="2017-07-10T12:29:38.804Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-07-10</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="解决中文乱码"><a href="#解决中文乱码" class="headerlink" title="解决中文乱码"></a>解决中文乱码</h1><p>首先说一下比较常见的中文乱码问题，解决方法如下。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">import matplotlib  </div><div class="line">#matplotlib.use(&apos;qt4agg&apos;)  </div><div class="line">from matplotlib.font_manager import *  </div><div class="line">import matplotlib.pyplot as plt  </div><div class="line">#定义自定义字体，文件名从1.b查看系统中文字体中来  </div><div class="line">myfont = FontProperties(fname=&apos;/usr/share/fonts/mcyh/mcyh.ttf&apos;)  </div><div class="line">#解决负号&apos;-&apos;显示为方块的问题  </div><div class="line">matplotlib.rcParams[&apos;axes.unicode_minus&apos;]=False  </div><div class="line">plt.plot([-1,2,-5,3])  </div><div class="line">plt.title(u&apos;中文&apos;,fontproperties=myfont)</div></pre></td></tr></table></figure>
+        
+          <a class="article-more-a" href="/2017/07/10/Python-matplotlib用法/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/07/10/Python-matplotlib用法/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+  
     <article id="post-Level DB 学习笔记" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
