@@ -163,12 +163,13 @@
     <div class="article-entry" itemprop="articleBody">
       
         <p>glob模块是最简单的模块之一，内容非常少。用它可以查找符合特定规则的文件路径名。跟使用Windows下的文件搜索差不多。查找文件只用到三个匹配符：”*”,”?”,”[]”。</p>
-<pre><code>&quot;*&quot;匹配0个或多个字符；
-&quot;?&quot;匹配单个字符；
-&quot;[]&quot;匹配指定范围内的字符，如：[0-9]匹配数字。
-</code></pre><h4 id="glob-glob"><a href="#glob-glob" class="headerlink" title="glob.glob"></a>glob.glob</h4><p>返回所有匹配的文件路径列表。它只有一个参数pathname，定义饿了文件路径匹配规则，这里可以是绝对路径，也可以是相对路径。使用glob.glob的例子如下：</p>
+<ul>
+<li>“*”匹配0个或多个字符；</li>
+<li>“?”匹配单个字符；</li>
+<li>“[]”匹配指定范围内的字符，如：[0-9]匹配数字。<h5 id="glob-glob"><a href="#glob-glob" class="headerlink" title="glob.glob"></a>glob.glob</h5>返回所有匹配的文件路径列表。它只有一个参数pathname，定义饿了文件路径匹配规则，这里可以是绝对路径，也可以是相对路径。使用glob.glob的例子如下：</li>
+</ul>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">import glob</div><div class="line">#获取指定目录下的所有图片</div><div class="line">print(glob.glob(r&quot;F:\test\*.xls&quot;))</div><div class="line">#获取上级目录的所有.py文件</div><div class="line">print(glob.glob(r&quot;../*.py&quot;)) #相对路径</div></pre></td></tr></table></figure>
-<p>glob.iglob<br>获取一个可遍历对象，使用它可以逐个获取匹配的文件路径。与glob.glob()的区别是：glob.glob同时获取所有的匹配路径，而glob.iglob一次只获取一个匹配路径。与.NET中操作数据库用到的DataSet与DataReader类似。例子如下：</p>
+<h5 id="glob-iglob"><a href="#glob-iglob" class="headerlink" title="glob.iglob"></a>glob.iglob</h5><p>获取一个可遍历对象，使用它可以逐个获取匹配的文件路径。与glob.glob()的区别是：glob.glob同时获取所有的匹配路径，而glob.iglob一次只获取一个匹配路径。与.NET中操作数据库用到的DataSet与DataReader类似。例子如下：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">import glob</div><div class="line">#父目录中的.py文件</div><div class="line">f=glob.iglob(r&quot;../*.py&quot;)</div><div class="line">print(f) #&lt;generator object _iglob at 0x00000238B60F6BF8&gt;</div><div class="line">for py in f:</div><div class="line">    print(py)</div></pre></td></tr></table></figure>
 
       
