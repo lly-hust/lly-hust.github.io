@@ -6,22 +6,19 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Python-matplotlib用法 | Liya Lin&#39;s Blog</title>
+  <title>Liya Lin&#39;s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="解决中文乱码首先说一下比较常见的中文乱码问题，解决方法如下。 12345678910import matplotlib  #matplotlib.use(&amp;apos;qt4agg&amp;apos;)  from matplotlib.font_manager import *  import matplotlib.pyplot as plt  #定义自定义字体，文件名从1.b查看系统中文字体中来  my">
-<meta name="keywords" content="python">
+  <meta name="description" content="glob模块是最简单的模块之一，内容非常少。用它可以查找符合特定规则的文件路径名。跟使用Windows下的文件搜索差不多。查找文件只用到三个匹配符：”*”,”?”,”[]”。 &amp;quot;*&amp;quot;匹配0个或多个字符； &amp;quot;?&amp;quot;匹配单个字符； &amp;quot;[]&amp;quot;匹配指定范围内的字符，如：[0-9]匹配数字。 glob.glob返回所有匹配的文件路径列表。它只有一个参">
+<meta name="keywords">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Python-matplotlib用法">
-<meta property="og:url" content="http://yoursite.com/2017/07/10/Python-matplotlib用法/index.html">
+<meta property="og:title" content="Liya Lin's Blog">
+<meta property="og:url" content="http://yoursite.com/2017/12/08/Python模块：glob文件路径查找/index.html">
 <meta property="og:site_name" content="Liya Lin's Blog">
-<meta property="og:description" content="解决中文乱码首先说一下比较常见的中文乱码问题，解决方法如下。 12345678910import matplotlib  #matplotlib.use(&amp;apos;qt4agg&amp;apos;)  from matplotlib.font_manager import *  import matplotlib.pyplot as plt  #定义自定义字体，文件名从1.b查看系统中文字体中来  my">
-<meta property="og:image" content="http://img.blog.csdn.net/20160713104011443">
-<meta property="og:image" content="http://img.blog.csdn.net/20160713104042890">
-<meta property="og:updated_time" content="2017-07-10T13:15:55.014Z">
+<meta property="og:description" content="glob模块是最简单的模块之一，内容非常少。用它可以查找符合特定规则的文件路径名。跟使用Windows下的文件搜索差不多。查找文件只用到三个匹配符：”*”,”?”,”[]”。 &amp;quot;*&amp;quot;匹配0个或多个字符； &amp;quot;?&amp;quot;匹配单个字符； &amp;quot;[]&amp;quot;匹配指定范围内的字符，如：[0-9]匹配数字。 glob.glob返回所有匹配的文件路径列表。它只有一个参">
+<meta property="og:updated_time" content="2017-12-08T09:03:25.369Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Python-matplotlib用法">
-<meta name="twitter:description" content="解决中文乱码首先说一下比较常见的中文乱码问题，解决方法如下。 12345678910import matplotlib  #matplotlib.use(&amp;apos;qt4agg&amp;apos;)  from matplotlib.font_manager import *  import matplotlib.pyplot as plt  #定义自定义字体，文件名从1.b查看系统中文字体中来  my">
-<meta name="twitter:image" content="http://img.blog.csdn.net/20160713104011443">
+<meta name="twitter:title" content="Liya Lin's Blog">
+<meta name="twitter:description" content="glob模块是最简单的模块之一，内容非常少。用它可以查找符合特定规则的文件路径名。跟使用Windows下的文件搜索差不多。查找文件只用到三个匹配符：”*”,”?”,”[]”。 &amp;quot;*&amp;quot;匹配0个或多个字符； &amp;quot;?&amp;quot;匹配单个字符； &amp;quot;[]&amp;quot;匹配指定范围内的字符，如：[0-9]匹配数字。 glob.glob返回所有匹配的文件路径列表。它只有一个参">
   
     <link rel="alternative" href="/atom.xml" title="Liya Lin&#39;s Blog" type="application/atom+xml">
   
@@ -163,54 +160,19 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-Python-matplotlib用法" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-Python模块：glob文件路径查找" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 class="article-title" itemprop="name">
-      Python-matplotlib用法
-    </h1>
-  
-
-        
-        <a href="/2017/07/10/Python-matplotlib用法/" class="archive-article-date">
-  	<time datetime="2017-07-10T12:29:38.804Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-07-10</time>
-</a>
-        
-      </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="解决中文乱码"><a href="#解决中文乱码" class="headerlink" title="解决中文乱码"></a>解决中文乱码</h1><p>首先说一下比较常见的中文乱码问题，解决方法如下。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">import matplotlib  </div><div class="line">#matplotlib.use(&apos;qt4agg&apos;)  </div><div class="line">from matplotlib.font_manager import *  </div><div class="line">import matplotlib.pyplot as plt  </div><div class="line">#定义自定义字体，文件名从1.b查看系统中文字体中来  </div><div class="line">myfont = FontProperties(fname=&apos;/usr/share/fonts/mcyh/mcyh.ttf&apos;)  </div><div class="line">#解决负号&apos;-&apos;显示为方块的问题  </div><div class="line">matplotlib.rcParams[&apos;axes.unicode_minus&apos;]=False  </div><div class="line">plt.plot([-1,2,-5,3])  </div><div class="line">plt.title(u&apos;中文&apos;,fontproperties=myfont)</div></pre></td></tr></table></figure>
-<a id="more"></a>
-<p>上面的fname需要通过以下命令查看。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">fc-list :lang=zh</div></pre></td></tr></table></figure>
-<p>但是可能不存在中文字体，此时莫慌，进入windows的C:\Winodws\Fonts目录，里面有很多ttf文件，拷贝到以下目录即可。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">/usr/share/fonts/</div></pre></td></tr></table></figure>
-<h1 id="切入正题"><a href="#切入正题" class="headerlink" title="切入正题"></a>切入正题</h1><ol>
-<li>画折线图 、柱状图的代码如下：</li>
-</ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div></pre></td><td class="code"><pre><div class="line">#coding=utf-8</div><div class="line">import matplotlib as mat</div><div class="line">import sys</div><div class="line">reload(sys)</div><div class="line">mat.use(&apos;Agg&apos;)</div><div class="line">import matplotlib.pyplot as plt</div><div class="line">plt.rcdefaults()</div><div class="line">import numpy as np</div><div class="line">import matplotlib.pyplot as plt</div><div class="line">from pylab import *</div><div class="line">from matplotlib.ticker import FuncFormatter,MaxNLocator </div><div class="line">import random</div><div class="line"></div><div class="line">sys.setdefaultencoding(&apos;utf-8&apos;)</div><div class="line"></div><div class="line">#data=np.loadtxt(file, delimiter=&apos;,&apos;)</div><div class="line"></div><div class="line">x_pos=range(0,1440)</div><div class="line">repeat_ratio=[]</div><div class="line">time=[]</div><div class="line"></div><div class="line">for i in range(0, 1440):</div><div class="line">    repeat_ratio.append(random.random())</div><div class="line"></div><div class="line"></div><div class="line">for k in range(24):</div><div class="line">    if k % 3 == 0:</div><div class="line">        hour=&apos;%02d&apos; %k</div><div class="line">        min=&apos;00&apos;</div><div class="line">        time.append(hour+&apos;:&apos;+min)</div><div class="line">    else:</div><div class="line">        time.append(&apos;&apos;) </div><div class="line">    for i in range(59):</div><div class="line">        time.append(&apos;&apos;)</div><div class="line"></div><div class="line"></div><div class="line">xticks=range(0, 1441, 180)#设置x轴步长</div><div class="line">xlabels=[str(n * 3) +&apos;:00&apos; for n in range(0, len(xticks), 1)]#x坐标显示的字符</div><div class="line"></div><div class="line">plt.figure(num=0, figsize=(20, 10))</div><div class="line">plt.bar(x_pos, repeat_ratio, align=&apos;center&apos;, alpha=0.3, facecolor=&apos;y&apos;)#画柱状图</div><div class="line">#plt.plot(x_pos, repeat_ratio,&apos;-b&apos;)#画折线图</div><div class="line">plt.ylabel(&apos;repeat rate/%&apos;)</div><div class="line">plt.xlim(0,1440)</div><div class="line">plt.ylim(0, 1)</div><div class="line">plt.title(&apos;Repeat Rate&apos;)</div><div class="line">plt.grid(True)</div><div class="line">#plt.xticks(np.arange(1440),time)</div><div class="line">plt.xticks(xticks, xlabels)</div><div class="line"></div><div class="line">def percentage_format(x,pos=0):</div><div class="line">    return &apos;%1.2f%%&apos;%(x*100)</div><div class="line">gca().yaxis.set_major_formatter(FuncFormatter(percentage_format))#纵坐标按百分数输出</div><div class="line">plt.savefig(&apos;repeat.jpg&apos;)</div><div class="line"></div><div class="line">plt.close(0)</div></pre></td></tr></table></figure>
-<p>折线图：<br><img src="http://img.blog.csdn.net/20160713104011443" alt="image"><br>柱状图：<br><img src="http://img.blog.csdn.net/20160713104042890" alt="image"></p>
-<ol>
-<li>下面是封装好了的画折线图、饼图、柱状图的代码：</li>
-</ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div><div class="line">100</div><div class="line">101</div><div class="line">102</div><div class="line">103</div><div class="line">104</div><div class="line">105</div><div class="line">106</div><div class="line">107</div><div class="line">108</div><div class="line">109</div><div class="line">110</div><div class="line">111</div><div class="line">112</div><div class="line">113</div><div class="line">114</div><div class="line">115</div><div class="line">116</div><div class="line">117</div><div class="line">118</div><div class="line">119</div><div class="line">120</div><div class="line">121</div><div class="line">122</div><div class="line">123</div><div class="line">124</div><div class="line">125</div><div class="line">126</div><div class="line">127</div><div class="line">128</div><div class="line">129</div><div class="line">130</div><div class="line">131</div><div class="line">132</div><div class="line">133</div><div class="line">134</div><div class="line">135</div><div class="line">136</div><div class="line">137</div><div class="line">138</div><div class="line">139</div><div class="line">140</div><div class="line">141</div></pre></td><td class="code"><pre><div class="line">#coding=utf-8</div><div class="line">import matplotlib as mat</div><div class="line">import sys</div><div class="line">reload(sys)</div><div class="line">mat.use(&apos;Agg&apos;)</div><div class="line">import matplotlib.pyplot as plt</div><div class="line">plt.rcdefaults()</div><div class="line">import numpy as np</div><div class="line">import matplotlib.pyplot as plt</div><div class="line">from pylab import *</div><div class="line">from matplotlib.ticker import FuncFormatter,MaxNLocator </div><div class="line">import random</div><div class="line">import datetime</div><div class="line">sys.setdefaultencoding(&apos;utf-8&apos;)</div><div class="line"></div><div class="line">folder=&quot;pic/&quot;</div><div class="line"></div><div class="line">def getYesterday():</div><div class="line">    #获得当前时间时间戳</div><div class="line">    today = datetime.date.today()</div><div class="line">    yesterday = today - datetime.timedelta(days=1)</div><div class="line">    #转换为其他日期格式,如:&quot;%Y-%m-%d %H:%M:%S&quot;</div><div class="line">    return yesterday.strftime(&quot;%Y-%m-%d&quot;)</div><div class="line"></div><div class="line">def getYesterday2():</div><div class="line">    today = datetime.date.today()</div><div class="line">    yesterday = today - datetime.timedelta(days=1)</div><div class="line">    return yesterday.strftime(&quot;%Y.%m.%d&quot;)</div><div class="line"></div><div class="line">def loadData(filename):</div><div class="line">    file = open(filename)</div><div class="line">    return np.loadtxt(file,dtype=&#123;&apos;names&apos;: (&apos;first&apos;, &apos;second&apos;),&apos;formats&apos;: (&apos;i4&apos;, &apos;i8&apos;)&#125;)</div><div class="line"></div><div class="line">#画柱状图</div><div class="line">def drawReuseBar(data,yesterday,house_number):</div><div class="line">    x = data[:][&apos;first&apos;]</div><div class="line">    y = data[:][&apos;second&apos;]</div><div class="line">    xticks = range(0,60)</div><div class="line">    plt.figure(num=0, figsize=(20, 10))</div><div class="line">    plt.bar(x,y,align=&apos;center&apos;, alpha=1, facecolor=&apos;b&apos;) </div><div class="line">    plt.title(&quot;Reuse Time Difference-%s-%d&quot;%(yesterday,house_number))</div><div class="line">    plt.grid(True)</div><div class="line">    plt.xlabel(&apos;Time Difference(minutes)&apos;)  </div><div class="line">    plt.ylabel(&apos;cnt&apos;)  </div><div class="line">    plt.xlim(0,61)</div><div class="line">    pic_folder=&quot;%s%s&quot;%(folder,yesterday)</div><div class="line">    plt.savefig(&quot;%s/%s.%d.bar.jpg&quot;%(pic_folder,yesterday,house_number))</div><div class="line">    plt.close(0)</div><div class="line"></div><div class="line">#画饼图</div><div class="line">def drawReusePie(data,yesterday,house_number):</div><div class="line">    plt.figure(num=2, figsize=(15,15))  </div><div class="line">    ax = axes([0.1, 0.1, 0.8, 0.8])  </div><div class="line"></div><div class="line">    labels = data[:][&apos;first&apos;]</div><div class="line">    fracs = data[:][&apos;second&apos;]</div><div class="line"></div><div class="line">    x=[0,0,0,0,0,0,0]</div><div class="line">    y=[&apos;0≤ X&lt;10min&apos;,&apos;10min≤ X&lt;20min&apos;,&apos;20≤ X&lt;30min&apos;,&apos;30min≤ X&lt;40min&apos;,&apos;40min≤ X&lt;50min&apos;,&apos;50min≤ X&lt;60min&apos;,&apos;X≥ 60min&apos;]</div><div class="line"></div><div class="line">    for i in range(0,len(labels)):</div><div class="line">        if(labels[i]!=60):</div><div class="line">            x[(labels[i]-1)/10]+=fracs[i]</div><div class="line">        else:</div><div class="line">            x[6]=fracs[i]</div><div class="line"></div><div class="line">    x[1],x[4]=x[4],x[1]</div><div class="line">    y[1],y[4]=y[4],y[1]</div><div class="line"></div><div class="line">    x[3],x[6]=x[6],x[3]</div><div class="line">    y[3],y[6]=y[6],y[3]</div><div class="line"></div><div class="line">    x[4],x[5]=x[5],x[4]</div><div class="line">    y[4],y[5]=y[5],y[4]</div><div class="line"></div><div class="line">    explode=(0,0,0,0,0,0,0)</div><div class="line">    plt.pie(x, explode=explode, labels=y, autopct=&apos;%1.1f%%&apos;, shadow=False,colors=(&quot;#00EC00&quot;,&quot;#0080FF&quot;,&quot;#A6A600&quot;,&quot;#D26900&quot;,&quot;#3C3C3C&quot;,&quot;#FF359A&quot;,&quot;#8080C0&quot;))  </div><div class="line">    plt.legend()</div><div class="line">    #title(&apos;Reuse Distence&apos;, bbox=&#123;&apos;facecolor&apos;:&apos;0.8&apos;, &apos;pad&apos;:5&#125;)  </div><div class="line">    plt.title(&quot;Reuse Time Difference-%s-%d&quot;%(yesterday,house_number))</div><div class="line">    pic_folder=&quot;%s%s&quot;%(folder,yesterday)</div><div class="line">    plt.savefig(&quot;%s/%s.%d.pie.jpg&quot;%(pic_folder,yesterday,house_number))</div><div class="line">    plt.close(2)</div><div class="line"></div><div class="line">#画折线图</div><div class="line">def drawReuseCurve(data,yesterday,house_number):</div><div class="line">    x = data[:][&apos;first&apos;]</div><div class="line">    y = data[:][&apos;second&apos;]</div><div class="line"></div><div class="line">    xx = []</div><div class="line">    yy = []</div><div class="line"></div><div class="line">    xx.append(0)</div><div class="line">    yy.append(y[0])</div><div class="line">    xx.append(x[0])</div><div class="line">    yy.append(y[0])</div><div class="line"></div><div class="line">    for i in range(1,len(y)):</div><div class="line">        xx.append(x[i-1])</div><div class="line">        y[i]+=y[i-1]</div><div class="line">        yy.append(y[i])</div><div class="line">        xx.append(x[i])</div><div class="line">        yy.append(y[i])</div><div class="line"></div><div class="line">    for i in range(0,len(yy)):</div><div class="line">        yy[i] = yy[i]*1.0/100</div><div class="line"></div><div class="line">    for i in range(0,len(y)):</div><div class="line">        y[i] = y[i]*1.0/100</div><div class="line"></div><div class="line">    plt.figure(num=1, figsize=(20, 10))</div><div class="line">    plt.plot(xx, yy,&apos;-b&apos;)#画折线图</div><div class="line">    plt.ylabel(&apos;ratio/%&apos;)</div><div class="line">    plt.xlabel(&apos;Time Difference(minutes)&apos;)</div><div class="line">    plt.ylim(0, 1.1)</div><div class="line">    plt.xlim(1,60)</div><div class="line">    plt.title(&quot;Reuse Time Difference-%s-%d&quot;%(yesterday,house_number))</div><div class="line">    plt.grid(True)</div><div class="line"></div><div class="line">    def percentage_format(x,pos=0):</div><div class="line">        return &apos;%1.2f%%&apos;%(x*100)</div><div class="line"></div><div class="line">    gca().yaxis.set_major_formatter(FuncFormatter(percentage_format))#纵坐标按百分数输出</div><div class="line">    pic_folder=&quot;%s%s&quot;%(folder,yesterday)</div><div class="line">    plt.savefig(&quot;%s/%s.%d.curve.jpg&quot;%(pic_folder,yesterday,house_number))</div><div class="line">    plt.close(1)</div><div class="line"></div><div class="line">def main():</div><div class="line">    house_id = int(sys.argv[1])</div><div class="line">    yesterday = getYesterday()</div><div class="line">    filename = &quot;/data/joyyzhang/reuse_result/%d/%s&quot;%(house_id,yesterday)</div><div class="line">    data = loadData(filename)</div><div class="line">    drawReuseBar(data,getYesterday2(),house_id)</div><div class="line">    filename = &quot;/data/joyyzhang/reuse_result/%d/%s.handle&quot;%(house_id,yesterday)</div><div class="line">    file = open(filename)</div><div class="line">    data = np.loadtxt(file,dtype=&#123;&apos;names&apos;: (&apos;first&apos;, &apos;second&apos;),&apos;formats&apos;: (&apos;i4&apos;, &apos;f4&apos;)&#125;)</div><div class="line">    drawReusePie(data,getYesterday2(),house_id)</div><div class="line">    drawReuseCurve(data,getYesterday2(),house_id)</div><div class="line"></div><div class="line">if __name__ == &quot;__main__&quot;:</div><div class="line">    main()</div></pre></td></tr></table></figure>
-<h2 id="小问题"><a href="#小问题" class="headerlink" title="小问题"></a>小问题</h2><blockquote>
-<p><a href="http://blog.csdn.net/dd809477679/article/details/52101195" target="_blank" rel="external">python问题Non-ASCII character ‘\xe5’ in file Apriori.py on line 1, but no encoding declared 解决办法</a></p>
-</blockquote>
-<p>Python中出现Non-ASCII character ‘\xe7’ in file ex6.py on line 1, but no encoding declare的错误<br> 可按照错误建议网址查看<a href="http://www.python.org/peps/pep-0263.html" target="_blank" rel="external">http://www.python.org/peps/pep-0263.html</a></p>
-<p>发现是因为Python在默认状态下不支持源文件中的编码所致。解决方案有如下三种：</p>
-<p>一、在文件头部添加如下注释码：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"># coding=&lt;encoding name&gt; 例如，可添加# coding=utf-8</div></pre></td></tr></table></figure>
-<p>二、在文件头部添加如下两行注释码：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">#!/usr/bin/python</div><div class="line"></div><div class="line"># -*- coding: &lt;encoding name&gt; -*- 例如，可添加# -*- coding: utf-8 -*-</div></pre></td></tr></table></figure>
-<p>三、在文件头部添加如下两行注释码：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">#!/usr/bin/python</div><div class="line"></div><div class="line"># vim: set fileencoding=&lt;encoding name&gt; : 例如，可添加# vim: set fileencoding=utf-8 :</div></pre></td></tr></table></figure>
-<p>来源： <a href="http://blog.csdn.net/joyyzhang/article/details/51895809" target="_blank" rel="external">python-matplotlib用法示例</a> </p>
+        <p>glob模块是最简单的模块之一，内容非常少。用它可以查找符合特定规则的文件路径名。跟使用Windows下的文件搜索差不多。查找文件只用到三个匹配符：”*”,”?”,”[]”。</p>
+<pre><code>&quot;*&quot;匹配0个或多个字符；
+&quot;?&quot;匹配单个字符；
+&quot;[]&quot;匹配指定范围内的字符，如：[0-9]匹配数字。
+</code></pre><h4 id="glob-glob"><a href="#glob-glob" class="headerlink" title="glob.glob"></a>glob.glob</h4><p>返回所有匹配的文件路径列表。它只有一个参数pathname，定义饿了文件路径匹配规则，这里可以是绝对路径，也可以是相对路径。使用glob.glob的例子如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">import glob</div><div class="line">#获取指定目录下的所有图片</div><div class="line">print(glob.glob(r&quot;F:\test\*.xls&quot;))</div><div class="line">#获取上级目录的所有.py文件</div><div class="line">print(glob.glob(r&quot;../*.py&quot;)) #相对路径</div></pre></td></tr></table></figure>
+<p>glob.iglob<br>获取一个可遍历对象，使用它可以逐个获取匹配的文件路径。与glob.glob()的区别是：glob.glob同时获取所有的匹配路径，而glob.iglob一次只获取一个匹配路径。与.NET中操作数据库用到的DataSet与DataReader类似。例子如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">import glob</div><div class="line">#父目录中的.py文件</div><div class="line">f=glob.iglob(r&quot;../*.py&quot;)</div><div class="line">print(f) #&lt;generator object _iglob at 0x00000238B60F6BF8&gt;</div><div class="line">for py in f:</div><div class="line">    print(py)</div></pre></td></tr></table></figure>
 
       
 
@@ -250,29 +212,7 @@
     <div class="article-info article-info-index">
       
       
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">python</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
       
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/学习笔记/" class="article-tag-list-link color5">学习笔记</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
 
       
 
@@ -322,7 +262,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="http://s.jiathis.com/qrcode.php?url=http://yoursite.com/2017/07/10/Python-matplotlib用法/" alt="微信分享二维码">
+      <img src="http://s.jiathis.com/qrcode.php?url=http://yoursite.com/2017/12/08/Python模块：glob文件路径查找/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -336,20 +276,15 @@
   
 <nav id="article-nav">
   
-    <a href="/2017/06/13/Level DB 学习笔记/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2017/07/10/Python-matplotlib用法/" id="article-nav-newer" class="article-nav-link-wrap">
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
-          Level DB 学习笔记
+          Python-matplotlib用法
         
       </div>
     </a>
   
-  
-    <a href="/2017/12/08/Python模块：glob文件路径查找/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title"></div>
-      <i class="icon-circle-right"></i>
-    </a>
   
 </nav>
 
@@ -360,7 +295,7 @@
   
   <div class="duoshuo">
 	<!-- 多说评论框 start -->
-	<div class="ds-thread" data-thread-key="Python-matplotlib用法" data-title="Python-matplotlib用法" data-url="http://yoursite.com/2017/07/10/Python-matplotlib用法/"></div>
+	<div class="ds-thread" data-thread-key="Python模块：glob文件路径查找" data-title="" data-url="http://yoursite.com/2017/12/08/Python模块：glob文件路径查找/"></div>
 	<!-- 多说评论框 end -->
 	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
 	<script type="text/javascript">
@@ -383,8 +318,8 @@
   <div id="cloud-tie-wrapper" class="cloud-tie-wrapper"></div>
 <script>
   var cloudTieConfig = {
-    url: "http://yoursite.com/2017/07/10/Python-matplotlib用法/", 
-    sourceId: "Python-matplotlib用法",
+    url: "http://yoursite.com/2017/12/08/Python模块：glob文件路径查找/", 
+    sourceId: "Python模块：glob文件路径查找",
     productKey: "true",
     target: "cloud-tie-wrapper"
   };
