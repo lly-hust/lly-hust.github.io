@@ -6,14 +6,19 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Archives: 2017 | Liya Lin&#39;s Blog</title>
+  <title>Python第三方库——xlrd和xlwt操作Excel文件 | Liya Lin&#39;s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Liya Lin's Blog">
-<meta property="og:url" content="http://yoursite.com/archives/2017/index.html">
+  <meta name="description" content="一、xlrd和xlwt的安装12pip install xlrdpip install xlwt 二、xlrd使用介绍1、导入模块1import xlrd 2、打开Excel文件读取数据1data = xlrd.open_workbook(&amp;apos;excelFile.xls&amp;apos;)">
+<meta name="keywords" content="python">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Python第三方库——xlrd和xlwt操作Excel文件">
+<meta property="og:url" content="http://yoursite.com/2017/12/11/Python第三方库——xlrd和xlwt操作Excel文件/index.html">
 <meta property="og:site_name" content="Liya Lin's Blog">
+<meta property="og:description" content="一、xlrd和xlwt的安装12pip install xlrdpip install xlwt 二、xlrd使用介绍1、导入模块1import xlrd 2、打开Excel文件读取数据1data = xlrd.open_workbook(&amp;apos;excelFile.xls&amp;apos;)">
+<meta property="og:updated_time" content="2017-12-11T03:21:01.077Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Liya Lin's Blog">
+<meta name="twitter:title" content="Python第三方库——xlrd和xlwt操作Excel文件">
+<meta name="twitter:description" content="一、xlrd和xlwt的安装12pip install xlrdpip install xlwt 二、xlrd使用介绍1、导入模块1import xlrd 2、打开Excel文件读取数据1data = xlrd.open_workbook(&amp;apos;excelFile.xls&amp;apos;)">
   
     <link rel="alternative" href="/atom.xml" title="Liya Lin&#39;s Blog" type="application/atom+xml">
   
@@ -155,36 +160,115 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
+            <article id="post-Python第三方库——xlrd和xlwt操作Excel文件" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
   
+    <h1 class="article-title" itemprop="name">
+      Python第三方库——xlrd和xlwt操作Excel文件
+    </h1>
   
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2017" class="archive-year">2017</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/12/11/Python第三方库——xlrd和xlwt操作Excel文件/" class="archive-article-date">
+
+        
+        <a href="/2017/12/11/Python第三方库——xlrd和xlwt操作Excel文件/" class="archive-article-date">
   	<time datetime="2017-12-11T03:21:19.600Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-12-11</time>
 </a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/12/11/Python第三方库——xlrd和xlwt操作Excel文件/">Python第三方库——xlrd和xlwt操作Excel文件</a>
-    </h1>
-  
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="一、xlrd和xlwt的安装"><a href="#一、xlrd和xlwt的安装" class="headerlink" title="一、xlrd和xlwt的安装"></a>一、xlrd和xlwt的安装</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">pip install xlrd</div><div class="line">pip install xlwt</div></pre></td></tr></table></figure>
+<h3 id="二、xlrd使用介绍"><a href="#二、xlrd使用介绍" class="headerlink" title="二、xlrd使用介绍"></a>二、xlrd使用介绍</h3><h5 id="1、导入模块"><a href="#1、导入模块" class="headerlink" title="1、导入模块"></a>1、导入模块</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">import xlrd</div></pre></td></tr></table></figure>
+<h5 id="2、打开Excel文件读取数据"><a href="#2、打开Excel文件读取数据" class="headerlink" title="2、打开Excel文件读取数据"></a>2、打开Excel文件读取数据</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">data = xlrd.open_workbook(&apos;excelFile.xls&apos;)</div></pre></td></tr></table></figure>
+<a id="more"></a>
+<h5 id="3、使用技巧"><a href="#3、使用技巧" class="headerlink" title="3、使用技巧"></a>3、使用技巧</h5><h6 id="获取一个工作表"><a href="#获取一个工作表" class="headerlink" title="获取一个工作表"></a>获取一个工作表</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">table = data.sheets()[0]          #通过索引顺序获取</div><div class="line">table = data.sheet_by_index(0) #通过索引顺序获取</div><div class="line">table = data.sheet_by_name(u&apos;Sheet1&apos;)#通过名称获取</div></pre></td></tr></table></figure>
+<h6 id="获取整行和整列的值（数组）"><a href="#获取整行和整列的值（数组）" class="headerlink" title="获取整行和整列的值（数组）　　"></a>获取整行和整列的值（数组）　　</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">table.row_values(i)</div><div class="line">table.col_values(i)</div></pre></td></tr></table></figure>
+<h6 id="获取行数和列数"><a href="#获取行数和列数" class="headerlink" title="获取行数和列数　　"></a>获取行数和列数　　</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">nrows = table.nrows </div><div class="line">ncols = table.ncols</div></pre></td></tr></table></figure>
+<h6 id="循环行列表数据"><a href="#循环行列表数据" class="headerlink" title="循环行列表数据"></a>循环行列表数据</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">for i in range(nrows):</div><div class="line">    print table.row_values(i)</div></pre></td></tr></table></figure>
+<h6 id="单元格"><a href="#单元格" class="headerlink" title="单元格"></a>单元格</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">cell_A1 = table.cell(0,0).value</div><div class="line">cell_C4 = table.cell(2,3).value</div></pre></td></tr></table></figure>
+<h6 id="使用行列索引"><a href="#使用行列索引" class="headerlink" title="使用行列索引"></a>使用行列索引</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">cell_A1 = table.row(0)[0].value</div><div class="line">cell_A2 = table.col(1)[0].value</div></pre></td></tr></table></figure>
+<h6 id="简单的写入"><a href="#简单的写入" class="headerlink" title="简单的写入"></a>简单的写入</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">row = 0</div><div class="line">col = 0</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"># 类型 0 empty,1 string, 2 number, 3 date, 4 boolean, 5 error</div><div class="line">ctype = 1 value = &apos;单元格的值&apos;</div><div class="line">xf = 0 # 扩展的格式化</div><div class="line">table.put_cell(row, col, ctype, value, xf)</div><div class="line">table.cell(0,0)  #单元格的值&apos;</div><div class="line">table.cell(0,0).value #单元格的值&apos;</div></pre></td></tr></table></figure>
+<h6 id="用例如下："><a href="#用例如下：" class="headerlink" title="用例如下："></a>用例如下：</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div></pre></td><td class="code"><pre><div class="line"># _*_ coding:utf-8 _*_  </div><div class="line">  </div><div class="line">#----------------------------------------------------------------------------  </div><div class="line"># import modules   </div><div class="line">#----------------------------------------------------------------------------  </div><div class="line">import os  </div><div class="line">import xlrd  </div><div class="line">from datetime import date,datetime  </div><div class="line">  </div><div class="line">#打开Excel文件  </div><div class="line">workbook = xlrd.open_workbook(&apos;09-10.11-38-12-HTTP-GOOD-1-Lte1sDataStat_Charts.xlsx&apos;)  </div><div class="line">  </div><div class="line">#输出Excel文件中所有sheet的名字  </div><div class="line">print workbook.sheet_names()  </div><div class="line">  </div><div class="line">#根据sheet索引或者名称获取sheet内容  </div><div class="line">Data_sheet    = workbook.sheets()[0]  </div><div class="line">CdfData_sheet = workbook.sheet_by_index(1)  </div><div class="line">Charts_sheet  = workbook.sheet_by_name(u&apos;Charts&apos;)  </div><div class="line">  </div><div class="line">#获取sheet名称、行数和列数  </div><div class="line">print Data_sheet.name,    Data_sheet.nrows,    Data_sheet.ncols,\  </div><div class="line">      CdfData_sheet.name, CdfData_sheet.nrows, CdfData_sheet.ncols,\  </div><div class="line">      Charts_sheet.name,  Charts_sheet.nrows,  Charts_sheet.ncols  </div><div class="line">  </div><div class="line">#获取整行和整列的值（列表）      </div><div class="line">rows = Data_sheet.row_values(0) #获取第一行内容  </div><div class="line">cols = Data_sheet.col_values(1) #获取第二列内容  </div><div class="line">#print rows  </div><div class="line">#print cols  </div><div class="line">  </div><div class="line">#获取单元格内容  </div><div class="line">cell_A1 = Data_sheet.cell(0,0).value  </div><div class="line">cell_C1 = Data_sheet.cell(0,2).value  </div><div class="line">cell_B1 = Data_sheet.row(0)[1].value  </div><div class="line">cell_D2 = Data_sheet.col(3)[1].value  </div><div class="line">print cell_A1, cell_B1, cell_C1, cell_D2  </div><div class="line">  </div><div class="line">#获取单元格内容的数据类型  </div><div class="line">#ctype:0 empty,1 string, 2 number, 3 date, 4 boolean, 5 error  </div><div class="line">print &apos;cell(0,0)数据类型:&apos;, Data_sheet.cell(0,0).ctype  </div><div class="line">print &apos;cell(1,0)数据类型:&apos;, Data_sheet.cell(1,0).ctype  </div><div class="line">print &apos;cell(1,1)数据类型:&apos;, Data_sheet.cell(1,1).ctype  </div><div class="line">print &apos;cell(1,2)数据类型:&apos;, Data_sheet.cell(1,2).ctype  </div><div class="line">  </div><div class="line">#获取单元格内容为日期的数据  </div><div class="line">date_value = xlrd.xldate_as_tuple(Data_sheet.cell_value(1,0),workbook.datemode)  </div><div class="line">print date_value  </div><div class="line">print &apos;%d:%d:%d&apos; %(date_value[3:])  </div><div class="line">  </div><div class="line">d = &#123;&apos;11:25:59&apos;:[1, 2, 3], &apos;11:26:00&apos;:[2, 3, 4], &apos;11:26:01&apos;:[3, 4, 5]&#125;  </div><div class="line">print d[&apos;11:25:59&apos;]  </div><div class="line">print d[&apos;11:26:00&apos;]  </div><div class="line">print d[&apos;11:26:01&apos;]  </div><div class="line">  </div><div class="line">print d[&apos;11:25:59&apos;][0]  </div><div class="line">print d[&apos;11:26:00&apos;][0]  </div><div class="line">print d[&apos;11:26:01&apos;][0]</div></pre></td></tr></table></figure>
+<h3 id="三、xlwt使用介绍"><a href="#三、xlwt使用介绍" class="headerlink" title="三、xlwt使用介绍"></a>三、xlwt使用介绍</h3><h6 id="Xlwt简介："><a href="#Xlwt简介：" class="headerlink" title="Xlwt简介："></a>Xlwt简介：</h6><p>在Python中写excel表要用到xlwt模块，大致使用流程如下：</p>
+<ol>
+<li>导入模块</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">import xlwt</div></pre></td></tr></table></figure>
+<ol>
+<li>创建workbook（其实就是excel，后来保存一下就行）</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">workbook = xlwt.Workbook(encoding = &apos;ascii&apos;)</div></pre></td></tr></table></figure>
+<ol>
+<li>创建表</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">worksheet = workbook.add_sheet(&apos;My Worksheet&apos;)</div></pre></td></tr></table></figure>
+<ol>
+<li>往单元格内写入内容</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">worksheet.write(0, 0, label = &apos;Row 0, Column 0 Value&apos;)</div></pre></td></tr></table></figure>
+<ol>
+<li>保存</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">workbook.save(&apos;Excel_Workbook.xls&apos;)</div></pre></td></tr></table></figure>
+<p>以上是最基本的功能。</p>
+<h6 id="相关模块："><a href="#相关模块：" class="headerlink" title="相关模块："></a>相关模块：</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">csv             python标准模块。推荐。</div><div class="line">xlrd            读取 .xls, .xlsx 文件。</div><div class="line">xlutils         xlrd和xlwt的集合。</div><div class="line">openpyxl        读写 Excel 2007 xlsx/xlsm文件 。纯python，效率不高。</div><div class="line">Matplotlib      2D作图模块，适用于基于excel作图。</div><div class="line">Pywin32         python windows扩展 ，不跨平台，通过COM口连接excel。</div><div class="line">Pyxll           在excel中使用python替代vbs。http://www.pyxll.com/。类似模块有pyinex。Python For Excel http://www.opentradingsystem.com/PythonForExcel/main.html</div><div class="line">XlsxWriter      写xlsx文件。纯python。</div></pre></td></tr></table></figure>
+<h6 id="快速入门"><a href="#快速入门" class="headerlink" title="快速入门"></a>快速入门</h6><p>下面例子，创建一个名为mini.xls的文件，它有一个空sheet：’xlwt was here’。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">fromxlwt import *</div><div class="line">w =Workbook()</div><div class="line">ws = w.add_sheet(&apos;xlwtwas here&apos;)</div><div class="line">w.save(&apos;mini.xls&apos;)</div></pre></td></tr></table></figure>
+<p>Workbook类初始化时有encoding和style_compression参数。</p>
+<p>encoding，设置字符编码，一般要这样设置：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">w = Workbook(encoding=&apos;utf-8&apos;)</div></pre></td></tr></table></figure></p>
+<p>就可以在excel中输出中文了。默认是ascii。当然要记得在文件头部添加：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"># -*- coding: utf-8-*-</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line">style_compression 表示是否压缩，不常用。</div><div class="line">Workbook 还有一些属性：</div><div class="line">Owner 设置文档所有者。</div><div class="line">country_code： 国家码</div><div class="line">wnd_protect： 窗口保护</div><div class="line">obj_protect： 对象保护</div><div class="line">Protect： 保护</div><div class="line">backup_on_save： 保存时备份</div><div class="line">Hpos： 横坐标</div><div class="line">Vpos： 纵坐标</div><div class="line">Width： 宽度</div><div class="line">Height： 高度</div><div class="line">active_sheet： 活动sheet</div><div class="line">tab_width： tab宽度</div><div class="line">wnd_visible： 窗口是否可见</div><div class="line">wnd_mini： 窗口最小化</div><div class="line">hscroll_visible： 横向滚动条是否可见。</div><div class="line">vscroll_visible： 纵向滚动条是否可见。</div><div class="line">tabs_visible： tab是否可见。</div><div class="line">dates_1904： 是否使用1904日期系统</div><div class="line">use_cell_values： 单元格的值</div><div class="line">default_style： 默认样式</div><div class="line">colour_RGB： 颜色</div></pre></td></tr></table></figure>
+<p>方法有：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">add_style</div><div class="line">add_font</div><div class="line">add_str</div><div class="line">del_str</div><div class="line">str_index</div><div class="line">add_rt</div><div class="line">rt_index</div><div class="line">add_sheet</div><div class="line">get_sheet</div><div class="line">raise_bad_sheetname</div><div class="line">convert_sheetindex</div><div class="line">setup_xcall</div><div class="line">add_sheet_reference</div></pre></td></tr></table></figure>
+<h6 id="用例如下：-1"><a href="#用例如下：-1" class="headerlink" title="用例如下："></a>用例如下：</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div></pre></td><td class="code"><pre><div class="line"># _*_ coding:utf-8 _*_  </div><div class="line">  </div><div class="line">#----------------------------------------------------------------------------  </div><div class="line"># import modules   </div><div class="line">#----------------------------------------------------------------------------  </div><div class="line">import os  </div><div class="line">import xlwt           </div><div class="line">  </div><div class="line">  </div><div class="line">def set_style(name, height, bold = False):  </div><div class="line">    style = xlwt.XFStyle()   #初始化样式  </div><div class="line">      </div><div class="line">    font = xlwt.Font()       #为样式创建字体  </div><div class="line">    font.name = name  </div><div class="line">    font.bold = bold  </div><div class="line">    font.color_index = 4  </div><div class="line">    font.height = height  </div><div class="line">      </div><div class="line">    style.font = font  </div><div class="line">    return style  </div><div class="line">  </div><div class="line">      </div><div class="line">def write_excel():  </div><div class="line">    #创建工作簿  </div><div class="line">    workbook = xlwt.Workbook(encoding=&apos;utf-8&apos;)    </div><div class="line">    #创建sheet  </div><div class="line">    data_sheet = workbook.add_sheet(&apos;demo&apos;)    </div><div class="line">    row0 = [u&apos;字段名称&apos;, u&apos;大致时段&apos;, &apos;CRNTI&apos;, &apos;CELL-ID&apos;]  </div><div class="line">    row1 = [u&apos;测试&apos;, &apos;15:50:33-15:52:14&apos;, 22706, 4190202]  </div><div class="line">      </div><div class="line">    #生成第一行和第二行  </div><div class="line">    for i in range(len(row0)):  </div><div class="line">        data_sheet.write(0, i, row0[i], set_style(&apos;Times New Roman&apos;, 220, True))  </div><div class="line">        data_sheet.write(1, i, row1[i], set_style(&apos;Times New Roman&apos;, 220, True))  </div><div class="line">      </div><div class="line">    #保存文件  </div><div class="line">    workbook.save(&apos;demo.xls&apos;)     </div><div class="line">      </div><div class="line">      </div><div class="line">if __name__ == &apos;__main__&apos;:   </div><div class="line">    write_excel()  </div><div class="line">    print u&apos;创建demo.xlsx文件成功&apos;</div></pre></td></tr></table></figure>
+<h6 id="参考资料："><a href="#参考资料：" class="headerlink" title="参考资料："></a>参考资料：</h6><p>文档出处：<a href="http://blog.csdn.net/wangkai_123456/article/details/50457284" target="_blank" rel="external">http://blog.csdn.net/wangkai_123456/article/details/50457284</a></p>
+<p>下载地址：<a href="https://pypi.python.org/pypi/xlwt/0.7.5" target="_blank" rel="external">https://pypi.python.org/pypi/xlwt/0.7.5</a></p>
+<p>官方网址：<a href="http://www.python-excel.org/" target="_blank" rel="external">http://www.python-excel.org/</a></p>
+<p>介绍胶片：<a href="http://www.simplistix.co.uk/presentations/python-excel.pdf" target="_blank" rel="external">http://www.simplistix.co.uk/presentations/python-excel.pdf</a></p>
 
-        <div class="article-info info-on-right">
-          
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>嘘寒问暖不如来笔巨款~<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/img/alipay.jpg">
+                      <span class="reward-type">支付宝</span>
+                    </div>
+                    
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/img/weixin.png">
+                      <span class="reward-type">微信</span>
+                    </div>
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
@@ -196,7 +280,7 @@
 		</ul>
 	</div>
 
-          
+      
 	<div class="article-category tagcloud">
 		<i class="icon-book icon"></i>
 		<ul class="article-tag-list">
@@ -209,196 +293,122 @@
 	</div>
 
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="http://s.jiathis.com/qrcode.php?url=http://yoursite.com/2017/12/11/Python第三方库——xlrd和xlwt操作Excel文件/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/12/08/Python模块：glob文件路径查找/" class="archive-article-date">
-  	<time datetime="2017-12-08T09:04:35.522Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-12-08</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/12/08/Python模块：glob文件路径查找/">Python模块：glob文件路径查找</a>
-    </h1>
-  
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">python</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/学习笔记/" class="article-tag-list-link color5">学习笔记</a>
-        		</li>
-      		
-		</ul>
-	</div>
+  
+<nav id="article-nav">
+  
+    <a href="/2017/12/08/Python模块：glob文件路径查找/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          Python模块：glob文件路径查找
+        
+      </div>
+    </a>
+  
+  
+</nav>
 
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/07/10/Python-matplotlib用法/" class="archive-article-date">
-  	<time datetime="2017-07-10T12:29:38.804Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-07-10</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/07/10/Python-matplotlib用法/">Python-matplotlib用法</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">python</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/学习笔记/" class="article-tag-list-link color5">学习笔记</a>
-        		</li>
-      		
-		</ul>
-	</div>
 
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/06/13/Level DB 学习笔记/" class="archive-article-date">
-  	<time datetime="2017-06-13T03:13:47.215Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-06-13</time>
-</a>
-        </div>
-    	 
+  <div class="duoshuo">
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="Python第三方库——xlrd和xlwt操作Excel文件" data-title="Python第三方库——xlrd和xlwt操作Excel文件" data-url="http://yoursite.com/2017/12/11/Python第三方库——xlrd和xlwt操作Excel文件/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"true"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+</div>
+
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/06/13/Level DB 学习笔记/">Level DB 学习笔记</a>
-    </h1>
+  
+  
+  <div id="cloud-tie-wrapper" class="cloud-tie-wrapper"></div>
+<script>
+  var cloudTieConfig = {
+    url: "http://yoursite.com/2017/12/11/Python第三方库——xlrd和xlwt操作Excel文件/", 
+    sourceId: "Python第三方库——xlrd和xlwt操作Excel文件",
+    productKey: "true",
+    target: "cloud-tie-wrapper"
+  };
+</script>
+<script src="https://img1.cache.netease.com/f2e/tie/yun/sdk/loader.js"></script>
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/06/09/Scaling Concurrent Log-Structured Data Stores/" class="archive-article-date">
-  	<time datetime="2017-06-09T11:36:18.226Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-06-09</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/06/09/Scaling Concurrent Log-Structured Data Stores/">Scaling Concurrent Log-Structured Data Stores</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/04/27/hello-world/" class="archive-article-date">
-  	<time datetime="2017-04-27T08:56:18.911Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-04-27</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/04/27/hello-world/">Hello World</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
-
-    
 
 
           </div>
@@ -426,8 +436,8 @@
 	var yiliaConfig = {
 		mathjax: true,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
